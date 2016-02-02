@@ -1,0 +1,33 @@
+{
+  "name" : "SkillBuilders Timeline",
+  "version" : "1.0.0",
+  "description" : "SkillBuilders Timeline is an alternative view to report date or time sensitive information. Each record will get an event slide and will be marked in a timeline scrubber. Users can select individual events or click through the timeline one event at a time.",
+  "keywords" : ["Timeline", "Report", "Calendar", "Time", "Date"],
+  "homepage" : "http://www.skillbuilders.com/free-apex-plug-ins",
+  "bugs" : {
+    "url" : "https://github.com/SkillBuilders/sb-timeline/issues",
+    "email" : "plugins@skillbuilders.com"
+  },
+  "license" : "MIT",
+  "author" : {
+    "name" : "SkillBuilders",
+    "email" : "plugins@skillbuilders.com",
+    "url" : "http://www.skillbuilders.com"
+  },
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/SkillBuilders/sb-timeline"
+  },
+  "oracle" : {
+    "versions" : ["11.2.0.1", "12.1.0.1"],
+    "apex" : {
+      "versions" : ["5.0.0"],
+      "plugin" : {
+        "internalName" : "COM.SB.REGION.TIMELINE",
+        "type" : "region",
+        "demo" : "",
+        "previewImage" : ""
+      }
+    }
+  }
+}
