@@ -22,13 +22,14 @@ procedure write_text_obj(
     p_headline  varchar2,
     p_text      varchar2,
     p_link      varchar2 default null,
-    p_link_text varchar2 default null
+    p_link_text varchar2 default null,
+    p_link_auth boolean  default true
 )
 as
 begin
 
     apex_json.open_object('text');
-        apex_json.write('text',     p_text || case when p_link is not null then ' <p class="sb-edit-link" >' || apex_plugin_util.get_link(p_link, p_link_text) ||'</p>' end);
+        apex_json.write('text',     p_text || case when p_link is not null and p_link_auth then ' <p class="sb-edit-link" >' || apex_plugin_util.get_link(p_link, p_link_text) ||'</p>' end);
         apex_json.write('headline', p_headline);
     apex_json.close_object;
 
@@ -154,6 +155,7 @@ function ajax (
     c_event_group_col        constant varchar2(35)   := p_region.attribute_11;
     c_link_target            constant varchar2(2000) := p_region.attribute_13;
     c_link_text              constant varchar2(2000) := p_region.attribute_14;
+    c_link_auth              constant varchar2(2000) := p_region.attribute_20;
     
     
     c_has_media_col          constant boolean := c_event_media_url_col IS NOT NULL;
@@ -169,6 +171,8 @@ function ajax (
     l_event_headline_col_no     pls_integer;
     l_event_sub_headline_col_no pls_integer;
     l_event_group_col_no        pls_integer;
+    
+    l_has_link_auth  boolean;
    
    -- Title variables
     l_headline          varchar2(255);
@@ -188,7 +192,8 @@ function ajax (
     l_event_group        varchar2(255);
     l_event_has_time     boolean;
     l_event_link         varchar2(4000);
-    l_event_link_text    varchar2(4000);       
+    l_event_link_text    varchar2(4000);
+
 begin
 
     apex_plugin_util.debug_region(
@@ -202,6 +207,12 @@ begin
     l_media_caption  := apex_plugin_util.replace_substitutions(p_region.attribute_04);
     l_media_credit   := apex_plugin_util.replace_substitutions(p_region.attribute_05);
     l_event_has_time := p_region.attribute_12 = 'Y';
+    
+    if c_link_auth is not null then
+      l_has_link_auth := apex_authorization.is_authorized(c_link_auth);
+    else
+      l_has_link_auth := true;
+    end if;
     
     if c_action = 'DATA'
     then
@@ -353,7 +364,7 @@ begin
                           write_date_obj('end_date',l_event_end, l_event_end_fmt, l_event_has_time);
                         end if;
                         write_date_obj('start_date',l_event_start, l_event_start_fmt, l_event_has_time);
-                        write_text_obj(l_event_headline,l_event_sub_headline,l_event_link,l_event_link_text);
+                        write_text_obj(l_event_headline,l_event_sub_headline,l_event_link,l_event_link_text,l_has_link_auth);
                     apex_json.close_object;
                  end loop;
                  apex_plugin_util.clear_component_values;
