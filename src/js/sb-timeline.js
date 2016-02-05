@@ -74,7 +74,7 @@
 
                // the timeline breaks if it doesnt have an event
                // we add a temporary event so that all events can be deleted
-               //then we remove the temporary event at the end
+               // then we remove the temporary event at the end
                timeline.add($.extend(true,{},ndfDate));
                for (var i = timeline.config.events.length - 1; i >= 0; i--) {
                   curEvent = timeline.config.events[i];
@@ -85,13 +85,18 @@
                   }
                };
 
+               // we want the timline to be visible before manipulating events
+               // in the case of removing all events it does not matter if the timeline is visible
+               // the timeline scale cannot compute properly while the timeline is hidden
+               that._updateDisplay();
+
                for(var i = 0; i < tlData.events.length; i++){
                  timeline.add(tlData.events[i]);
                }
                while(ndfEvents.length > 0){
                  timeline.removeId(ndfEvents.pop().unique_id);
                }
-               that._updateDisplay();
+               
             }
          });
       },
