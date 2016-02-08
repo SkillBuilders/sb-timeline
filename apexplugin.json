@@ -25,8 +25,8 @@
       "plugin" : {
         "internalName" : "COM.SB.REGION.TIMELINE",
         "type" : "region",
-        "demo" : "",
-        "previewImage" : ""
+        "demo" : "https://apex.skillbuilders.com/demo/f?p=PLUGIN_DEMOS:SB_TIMELINE",
+        "previewImage" : "https://raw.githubusercontent.com/SkillBuilders/sb-timeline/master/preview.png"
       }
     }
   }
