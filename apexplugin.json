@@ -3,7 +3,7 @@
   "version" : "1.0.0",
   "description" : "SkillBuilders Timeline is an alternative view to report date or time sensitive information. Each record will get an event slide and will be marked in a timeline scrubber. Users can select individual events or click through the timeline one event at a time.",
   "keywords" : ["Timeline", "Report", "Calendar", "Time", "Date"],
-  "homepage" : "http://www.skillbuilders.com",
+  "homepage" : "https://github.com/SkillBuilders/sb-timeline",
   "bugs" : {
     "url" : "https://github.com/SkillBuilders/sb-timeline/issues",
     "email" : "plugins@skillbuilders.com"
