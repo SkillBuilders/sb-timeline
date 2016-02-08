@@ -4,6 +4,8 @@ SkillBuilders Timeline is a free plugin built for apex 5
 ##Description
 SkillBuilders Timeline is an alternative view for reporting date or time sensitive information. Each record will get an event slide and will be marked in a timeline scrubber. Users can select individual events from the scrubber or click through the timeline one event at a time.
 
+View the [Demo](https://apex.skillbuilders.com/demo/f?p=PLUGIN_DEMOS:SB_TIMELINE)
+
 ##Credits
 Most of the hard work was performed by the good folks at [knightlab](http://timeline.knightlab.com) in producing the javascript library for the widget.
 
